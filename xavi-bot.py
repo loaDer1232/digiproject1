@@ -1,18 +1,18 @@
+import ast
 import csv
+from posixpath import split
 from tkinter import *
-from tkcalendar import Calendar
+#from tkcalendar import Calendar
 
 mainwindow = Tk()
 startwindow = Tk()
 incedentwindow = Tk()
 
-dateofincdent = Calendar(incedentwindow, selectmode='day', year = 2020, month = 5, day = 22)
+feilds = []
+rows = []
+data = []
 
-def creader(): 
-    file = open("stuff.csv")
-    cav = csv.DictReader(file)
-    print(cav)
-    file.close()
+#dateofincdent = Calendar(incedentwindow, selectmode='day', year = 2020, month = 5, day = 22)
 
 def cwriter():
     file = open("stuff.csv")
@@ -38,5 +38,15 @@ def incedent():
 def submit():
     entry = entry.get()
     entry2 = entry2.get()
-    
-main()
+
+def sherch():
+    with open("stuff.csv") as mainfile:
+        csv.reader(mainfile)
+        feilds = next(mainfile)
+        for i in mainfile:
+            rows.append(i)
+    print(feilds)
+    for e in rows:
+         data.append(ast.literal_eval(e.split(",")))
+    print(data)
+sherch()
