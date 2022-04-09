@@ -2,7 +2,6 @@ import ast
 import csv
 from posixpath import split
 from tkinter import *
-#from tkcalendar import Calendar
 
 mainwindow = Tk()
 startwindow = Tk()
@@ -12,12 +11,6 @@ feilds = []
 rows = []
 data = []
 
-#dateofincdent = Calendar(incedentwindow, selectmode='day', year = 2020, month = 5, day = 22)
-
-def cwriter():
-    file = open("stuff.csv")
-    cav = csv.writer(file)
-    file.close()
 
 def start():
     Button(startwindow, text="daily report", command=main).grid()
@@ -35,6 +28,7 @@ def incedent():
     Label(incedentwindow, text="name of student").grid()#link to incednt name
     Label(incedentwindow, text="nature of incednt").grid()
     Label(incedentwindow, text="addtonal info").grid()
+
 def submit():
     entry = entry.get()
     entry2 = entry2.get()
@@ -42,11 +36,13 @@ def submit():
 def sherch():
     with open("stuff.csv") as mainfile:
         csv.reader(mainfile)
-        feilds = next(mainfile)
+        feilds.append(str(next(mainfile).split(",")))
         for i in mainfile:
             rows.append(i)
     print(feilds)
-    for e in rows:
-         data.append(ast.literal_eval(e.split(",")))
+    for e in rows: #splits the single list of rows and makes each row its own list
+         md = ast.literal_eval(str(e.split(",")))
+         data.append(dict(zip(feilds, md)))
     print(data)
+
 sherch()
