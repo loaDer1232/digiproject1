@@ -1,11 +1,12 @@
 import ast
 import csv
+import itertools
 from posixpath import split
 from tkinter import *
 
-mainwindow = Tk()
-startwindow = Tk()
-incedentwindow = Tk()
+#mainwindow = Tk()
+#startwindow = Tk()
+#incedentwindow = Tk()
 
 feilds = []
 rows = []
@@ -33,16 +34,23 @@ def submit():
     entry = entry.get()
     entry2 = entry2.get()
 
-def sherch():
+def sherch(rows, feilds, data):
     with open("stuff.csv") as mainfile:
         csv.reader(mainfile)
-        feilds.append(str(next(mainfile).split(",")))
+        feilds = ast.literal_eval(str(next(mainfile).split(",")))
         for i in mainfile:
             rows.append(i)
+    for i in rows:
+        print(i)
+        data.append(dict(zip(feilds, str(i).split(","))))
     print(feilds)
-    for e in rows: #splits the single list of rows and makes each row its own list
-         md = ast.literal_eval(str(e.split(",")))
-         data.append(dict(zip(feilds, md)))
+    print(rows)
     print(data)
 
-sherch()
+    Check = input("name")
+    for i in data:
+        for e in i.values():
+            if Check in e:
+                 print(i)
+
+sherch(rows, feilds, data)
