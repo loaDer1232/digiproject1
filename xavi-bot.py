@@ -1,6 +1,5 @@
 import ast
 import csv
-import itertools
 from posixpath import split
 from tkinter import *
 
@@ -11,7 +10,7 @@ from tkinter import *
 feilds = []
 rows = []
 data = []
-
+info = {}
 
 def start():
     Button(startwindow, text="daily report", command=main).grid()
@@ -34,7 +33,7 @@ def submit():
     entry = entry.get()
     entry2 = entry2.get()
 
-def sherch(rows, feilds, data):
+def sherch(rows, feilds, data, info):
     with open("stuff.csv") as mainfile:
         csv.reader(mainfile)
         feilds = ast.literal_eval(str(next(mainfile).split(",")))
@@ -51,6 +50,6 @@ def sherch(rows, feilds, data):
     for i in data:
         for e in i.values():
             if Check in e:
-                 print(i)
-
-sherch(rows, feilds, data)
+                 info = i
+                 print(info)
+sherch(rows, feilds, data, info)
