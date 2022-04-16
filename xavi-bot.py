@@ -1,11 +1,16 @@
 import ast
+from cmath import inf
 import csv
 from posixpath import split
+from tabnanny import check
 from tkinter import *
 
-#mainwindow = Tk()
+mainwindow = Tk()
 #startwindow = Tk()
 #incedentwindow = Tk()
+
+sherchbox = Entry(mainwindow)
+sherchbox.grid()
 
 feilds = []
 rows = []
@@ -21,7 +26,7 @@ def main():
     Label(mainwindow, text="date").grid(row=2,column=2)
     Label(mainwindow, text="class").grid(row=1, column=3)
     Label(mainwindow, text="weather").grid()
-    Button(mainwindow, text="submit", command=submit).grid(row=3, column=2)
+    Button(mainwindow, text="submit", command=sherch).grid(row=3, column=2)
 
 def incedent():
     Label(incedentwindow, text="date").grid() #entry icdent date
@@ -33,7 +38,13 @@ def submit():
     entry = entry.get()
     entry2 = entry2.get()
 
-def sherch(rows, feilds, data, info):
+def sherchoutput(info):
+    Label(main, text= info[0])
+    Label(main, text= info[1])
+    Label(main, text= info[2])
+    Label(main, text= info[3])
+
+def sherch():
     with open("stuff.csv") as mainfile:
         csv.reader(mainfile)
         feilds = ast.literal_eval(str(next(mainfile).split(",")))
@@ -46,10 +57,12 @@ def sherch(rows, feilds, data, info):
     print(rows)
     print(data)
 
-    Check = input("name")
+    Check = sherchbox.get()
     for i in data:
         for e in i.values():
-            if Check in e:
+             if Check in e:
                  info = i
+                 info = info.values()
                  print(info)
-sherch(rows, feilds, data, info)
+                 sherchoutput(info)
+main()
