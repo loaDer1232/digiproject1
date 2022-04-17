@@ -1,5 +1,8 @@
-key,class,lastname,firstname
-1,1,smith,john
-2,1,dean,harley
-3,1,brown,alex
-4,2,pinder,gorge
+class,age,firstname
+
+chris,12,A
+
+xaviu,13,B
+
+john,15,A
+
