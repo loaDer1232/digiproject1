@@ -15,6 +15,7 @@ info = {}
 
 
 def start():
+    Label(startwindow, text="selcet function",font=("bold",13)).grid()
     Button(startwindow, text="daily report", command=daliyreportwindow).grid()
     Button(startwindow, text="sherch", command=main).grid()
     Button(startwindow, text="add student", command=addstudentwindow).grid()
@@ -33,6 +34,7 @@ def main():
 
 def addstudentwindow():
     def makelist():
+        Label(mainwindow,text="subitisoin sucseful",foreground="green").grid(row=4, column=1)
         global newstudent
         newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()]
         write()
@@ -53,6 +55,7 @@ def addstudentwindow():
 
 def daliyreportwindow():
     def makelist():
+        Label(mainwindow,text="subitisoin sucseful",foreground="green").grid(row=6, column=1)
         global reportdata
         reportdata = [
             reportbox1.get(),
@@ -84,8 +87,9 @@ def daliyreportwindow():
 
 def sherchoutput(info):
     results = Tk()
-    Label(results, text="\n".join(info)).grid(row=1, column=1)
-    Label(results, text="\n".join(info.values())).grid(row=1, column=2)
+    Label(results, text="results",font=("bold",13)).grid(row=1,column=1)
+    Label(results, text="\n".join(info)).grid(row=2, column=1)
+    Label(results, text="\n".join(info.values())).grid(row=2, column=2)
 
 
 def sherch():
@@ -102,16 +106,12 @@ def sherch():
     for i in rows:
         print(i)
         data.append(dict(zip(feilds, str(i).split(","))))
-    print(feilds)
-    print(rows)
-    print(data)
 
     Check = sherchbox.get()
     for i in data:
         for e in i.values():
             if Check in e:
                 info = i
-                print(info)
                 sherchoutput(info)
 
 
