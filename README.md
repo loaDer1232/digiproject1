@@ -27,7 +27,27 @@ there are sevral improvemts i am going to make to this program
 3. fix the code i was perviosly using to make a bad version of a database (was removed due to causeing the program to crash unexpectly)
 
 # testing
-to be done
+## Testing plan
+|Input / Output etc	|Name|	Data Type / Scope|
+|:--:|:--:|:--:|
+|process|fields |undefined / global|
+|process|rows |undefined / global|
+|process|info |undefined / global|
+|Input|sherchbox|string / global|
+|process|newstudent|undefined / global|
+|process|writeas|string / global|
+|input|studentbox1|string / local|
+|Input|studentbox2|string / local|
+|input|studentbox3|string / local|
+|process|reportdata|undefined / global|
+|input|reportbox1|string / local|
+|input|reportbox2|string / local|
+|input|reportbox3|string / local|
+|input|reportbox4|string / local|
+|input|reportbox5|string / local|
+|process|tedt|string / local|
+|process|Check|string / local|
+
 
 # planing 
 here is some proof of planing
