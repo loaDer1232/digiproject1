@@ -4,7 +4,7 @@ from tkinter import *
 
 startwindow = Tk()
 
-dropvalues = ["student", "location","day"]
+dropvalues = ["student", "location", "day"]
 sherchby = StringVar()
 
 
@@ -15,11 +15,16 @@ info = {}
 
 
 def start():
-    Label(startwindow, text="selcet function",font=("bold",13)).grid(row=1,column=1)
-    Button(startwindow, text="daily report", command=daliyreportwindow,width=10,height=1).grid(row=2,column=1)
-    Button(startwindow, text="sherch", command=main,width=10,height=1).grid(row=2,column=2)
-    Button(startwindow, text="add student", command=addstudentwindow,width=10,height=1).grid(row=3,column=1)
-    Button(startwindow, text="Quit", command=exit,width=10,height=1).grid(row=3,column=2)
+    Label(startwindow, text="selcet function",
+          font=("bold", 13)).grid(row=1, column=1)
+    Button(startwindow, text="daily report", command=daliyreportwindow,
+           width=10, height=1).grid(row=2, column=1)
+    Button(startwindow, text="sherch", command=main,
+           width=10, height=1).grid(row=2, column=2)
+    Button(startwindow, text="add student", command=addstudentwindow,
+           width=10, height=1).grid(row=3, column=1)
+    Button(startwindow, text="Quit", command=exit,
+           width=10, height=1).grid(row=3, column=2)
 
 
 def main():
@@ -27,7 +32,8 @@ def main():
     OptionMenu(mainwindow, sherchby, *dropvalues).grid(row=1, column=2)
     Label(mainwindow, text="sherch by").grid(row=1, column=1)
     Label(mainwindow, text="sherch for").grid(row=2, column=1)
-    Button(mainwindow, text="submit", command=sherch,width=10,height=1).grid(row=3, column=2)
+    Button(mainwindow, text="submit", command=sherch,
+           width=10, height=1).grid(row=3, column=2)
     global sherchbox
     sherchbox = Entry(mainwindow)
     sherchbox.grid(row=2, column=2)
@@ -35,7 +41,8 @@ def main():
 
 def addstudentwindow():
     def makelist():
-        Label(mainwindow,text="subitisoin sucseful",foreground="green").grid(row=4, column=1)
+        Label(mainwindow, text="subitisoin sucseful",
+              foreground="green").grid(row=4, column=1)
         global newstudent
         newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()]
         write()
@@ -51,12 +58,14 @@ def addstudentwindow():
     Label(mainwindow, text="student class").grid(row=3, column=1)
     studentbox3 = Entry(mainwindow)
     studentbox3.grid(row=3, column=2)
-    Button(mainwindow, text="subimt", command=makelist,width=10,height=1).grid(row=4, column=2)
+    Button(mainwindow, text="subimt", command=makelist,
+           width=10, height=1).grid(row=4, column=2)
 
 
 def daliyreportwindow():
     def makelist():
-        Label(mainwindow,text="subitisoin sucseful",foreground="green").grid(row=6, column=1)
+        Label(mainwindow, text="subitisoin sucseful",
+              foreground="green").grid(row=6, column=1)
         global reportdata
         reportdata = [
             reportbox1.get(),
@@ -83,12 +92,13 @@ def daliyreportwindow():
     Label(mainwindow, text="class").grid(row=5, column=1)
     reportbox5 = Entry(mainwindow)
     reportbox5.grid(row=5, column=2)
-    Button(mainwindow, text="subimt", command=makelist,width=10,height=1).grid(row=6, column=2)
+    Button(mainwindow, text="subimt", command=makelist,
+           width=10, height=1).grid(row=6, column=2)
 
 
 def sherchoutput(info):
     results = Tk()
-    Label(results, text="results",font=("bold",13)).grid(row=1,column=1)
+    Label(results, text="results", font=("bold", 13)).grid(row=1, column=1)
     Label(results, text="\n".join(info)).grid(row=2, column=1)
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
 
