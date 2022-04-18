@@ -1,4 +1,4 @@
-class,age,firstname
+firstname,age,class
 
 chris,12,A
 
@@ -6,6 +6,9 @@ xaviu,13,B
 
 john,15,A
 
-jef,13,B
-fe,12,B
-,,
+jef,13,B
+
+fe,12,B
+
+,,
+
