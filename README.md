@@ -21,7 +21,7 @@ as you can see in the code sample above this wont be to hard to fix
 
 # imporvments
 there are sevral improvemts i am going to make to this program 
-1. fix the dropdown menu in sherach 
+1. fix the dropdown menu in sherach   
 ![img](readmedata/dropdownprob.PNG) 
 2. let users shearch by more values
 3. fix the code i was perviosly using to make a bad version of a database (was removed due to causeing the program to crash unexpectly)
