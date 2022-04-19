@@ -26,10 +26,11 @@ there are sevral improvemts i am going to make to this program
 2. let users shearch by more values
 3. readd the abilty to ammened the data in the tables 
 4. fix the code i was perviosly using to make a bad version of a database (was removed due to causeing the program to crash unexpectly)
+5. reduce the complexity of the code to improve the big O to somting better than O(n^2)
 
 # testing
 ## Testing plan
-|Input / Output etc	|Name|	Data Type / Scope|
+|Input / Output etc|Name|Data Type / Scope|
 |:--:|:--:|:--:|
 |process|fields |undefined / global|
 |process|rows |undefined / global|
