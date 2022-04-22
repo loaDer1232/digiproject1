@@ -103,6 +103,7 @@ def sherchoutput(info):
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
 
 
+
 def sherch():
     tedt = sherchby.get()
     if tedt == "student":
@@ -124,7 +125,6 @@ def sherch():
             if Check in e:
                 info = i
                 sherchoutput(info)
-
 
 def write():
     with open(writeas, "a") as mainfile:
