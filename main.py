@@ -1,5 +1,6 @@
 import ast
 import csv
+import time
 from tkinter import *
 
 startwindow = Tk()
@@ -72,7 +73,8 @@ def daliyreportwindow():
             reportbox2.get(),
             reportbox3.get(),
             reportbox4.get(),
-            reportbox5.get()]
+            reportbox5.get(),
+            str(time.strftime("%x"))]
         write()
     mainwindow = Tk()
     global writeas
@@ -130,7 +132,7 @@ def write():
     with open(writeas, "a") as mainfile:
         writer = csv.writer(mainfile)
         if writeas == 'stuff.csv':
-            writer.writerows(reportdata)
+            writer.writerow(reportdata)
         if writeas == "role.csv":
             writer.writerow(newstudent)
 
