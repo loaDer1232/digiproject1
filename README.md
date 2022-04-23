@@ -3,6 +3,7 @@ eotc database
 Hi  
 this project is desigend to allow teacher to keep track of students on a eotc camp.  
 # bugs
+## solved bugs
 one of the majoir bugs that the program currently has is when a user shurches by day the program returns several copies of each window 
 ![imag](readmedata/suerachbydaybug.PNG)
 this is because of the the code surches though the data it does this by itarating tough the values of the array for each key so it returns mulatple times   
@@ -18,6 +19,7 @@ this is because of the the code surches though the data it does this by itaratin
                          
                          sherchoutput(info)```  
 as you can see in the code sample above this wont be to hard to fix   
+## unsolved bugs
 
 # imporvments
 there are sevral improvemts i am going to make to this program 
