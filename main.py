@@ -6,8 +6,6 @@ from tkinter import *
 startwindow = Tk()
 
 dropvalues = ["student", "location", "day"]
-sherchby = StringVar()
-
 
 feilds = []
 rows = []
@@ -30,7 +28,11 @@ def start():
 
 def main():
     mainwindow = Tk()
-    OptionMenu(mainwindow, sherchby, *dropvalues).grid(row=1, column=2)
+    global sherchby
+    sherchby = StringVar(mainwindow)
+    sherchby.set("Select an Option")
+    fuck = OptionMenu(mainwindow, sherchby, *dropvalues)
+    fuck.grid(row=1, column=2)
     Label(mainwindow, text="sherch by").grid(row=1, column=1)
     Label(mainwindow, text="sherch for").grid(row=2, column=1)
     Button(mainwindow, text="submit", command=sherch,
@@ -104,13 +106,10 @@ def sherchoutput(info):
     Label(results, text="\n".join(info)).grid(row=2, column=1)
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
 
-
-
 def sherch():
-    tedt = sherchby.get()
-    if tedt == "student":
+    if sherchby.get() == "student":
         file = "role.csv"
-    if tedt == "location" or "day":
+    elif sherchby.get() == "location" or "day":
         file = "stuff.csv"
     with open(file) as mainfile:
         csv.reader(mainfile)
@@ -122,11 +121,14 @@ def sherch():
         data.append(dict(zip(feilds, str(i).split(","))))
 
     Check = sherchbox.get()
+    info = {}
     for i in data:
-        for e in i.values():
-            if Check in e:
+        if Check in i.values():
+            if info != i:
                 info = i
                 sherchoutput(info)
+
+
 
 def write():
     with open(writeas, "a") as mainfile:
