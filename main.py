@@ -28,7 +28,6 @@ def start():
 
 def main():
     mainwindow = Tk()
-    global sherchby
     sherchby = StringVar(mainwindow)
     sherchby.set("Select an Option")
     fuck = OptionMenu(mainwindow, sherchby, *dropvalues)
@@ -37,6 +36,8 @@ def main():
     Label(mainwindow, text="sherch for").grid(row=2, column=1)
     Button(mainwindow, text="submit", command=sherch,
            width=10, height=1).grid(row=3, column=2)
+    global toopen
+    toopen = sherchby.get()
     global sherchbox
     sherchbox = Entry(mainwindow)
     sherchbox.grid(row=2, column=2)
@@ -105,11 +106,18 @@ def sherchoutput(info):
     Label(results, text="results", font=("bold", 13)).grid(row=1, column=1)
     Label(results, text="\n".join(info)).grid(row=2, column=1)
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
+    Button(results, text="expaned", command=showmore).grid(row=3, column=2)
+
+def showmore():
+    if toopen =="student":
+        toopen = "stuff.csv"
+    elif toopen == "location" or "day":
+        toopen = "role.csv"
 
 def sherch():
-    if sherchby.get() == "student":
+    if toopen == "student":
         file = "role.csv"
-    elif sherchby.get() == "location" or "day":
+    elif toopen == "location" or "day":
         file = "stuff.csv"
     with open(file) as mainfile:
         csv.reader(mainfile)
