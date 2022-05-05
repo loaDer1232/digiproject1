@@ -47,7 +47,7 @@ def addstudentwindow():
         Label(mainwindow, text="subitisoin sucseful",
               foreground="green").grid(row=4, column=1)
         global newstudent
-        newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()]
+        newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()] #makes it so that i dont need to decaler every box a global varible and save mermoery somehow 
         write()
     mainwindow = Tk()
     global writeas
@@ -76,7 +76,7 @@ def daliyreportwindow():
             reportbox3.get(),
             reportbox4.get(),
             reportbox5.get(),
-            str(time.strftime("%x"))]
+            str(time.strftime("%x"))] #adds the date that the report was filled according to the system to prevent back dating
         write()
     mainwindow = Tk()
     global writeas
@@ -85,7 +85,7 @@ def daliyreportwindow():
     reportbox1 = Entry(mainwindow)
     reportbox1.grid(row=1, column=2)
     Label(mainwindow, text="number of students").grid(row=2, column=1)
-    reportbox2 = Entry(mainwindow)
+    reportbox2 = Spinbox(mainwindow, from_=4, to=10, wrap=True)
     reportbox2.grid(row=2, column=2)
     Label(mainwindow, text="day").grid(row=3, column=1)
     reportbox3 = Entry(mainwindow)
@@ -113,18 +113,18 @@ def sherch():
         file = "stuff.csv"
     with open(file) as mainfile:
         csv.reader(mainfile)
-        feilds = ast.literal_eval(str(next(mainfile).split(",")))
+        feilds = ast.literal_eval(str(next(mainfile).split(","))) #takes the values and makes a "list of lists"
         for i in mainfile:
             rows.append(i)
     for i in rows:
         print(i)
-        data.append(dict(zip(feilds, str(i).split(","))))
+        data.append(dict(zip(feilds, str(i).split(",")))) #ties each value to its label to make them into sherchbale dictonarys
 
     Check = sherchbox.get()
     info = {}
     for i in data:
         if Check in i.values():
-            if info != i:
+            if info != i: #this checks if the answer was found pervoslay and stops duplaction
                 info = i
                 sherchoutput(info)
 
