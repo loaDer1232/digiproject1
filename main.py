@@ -6,6 +6,7 @@ from tkinter import *
 startwindow = Tk()
 
 dropvalues = ["student", "location", "day"]
+classlist = ["A","B","C"]
 
 feilds = []
 rows = []
@@ -27,15 +28,18 @@ def start():
 
 
 def main():
+    def rer():
+         global toopen
+         toopen = sherchby.get()
+         sherch()
     mainwindow = Tk()
-    global sherchby
     sherchby = StringVar(mainwindow)
     sherchby.set("Select an Option")
     fuck = OptionMenu(mainwindow, sherchby, *dropvalues)
     fuck.grid(row=1, column=2)
     Label(mainwindow, text="sherch by").grid(row=1, column=1)
     Label(mainwindow, text="sherch for").grid(row=2, column=1)
-    Button(mainwindow, text="submit", command=sherch,
+    Button(mainwindow, text="submit", command=rer,
            width=10, height=1).grid(row=3, column=2)
     global sherchbox
     sherchbox = Entry(mainwindow)
@@ -47,7 +51,7 @@ def addstudentwindow():
         Label(mainwindow, text="subitisoin sucseful",
               foreground="green").grid(row=4, column=1)
         global newstudent
-        newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()]
+        newstudent = [studentbox1.get(), studentbox2.get(), studentbox3.get()] #makes it so that i dont need to decaler every box a global varible and save mermoery somehow 
         write()
     mainwindow = Tk()
     global writeas
@@ -56,11 +60,13 @@ def addstudentwindow():
     studentbox1 = Entry(mainwindow)
     studentbox1.grid(row=1, column=2)
     Label(mainwindow, text="student age").grid(row=2, column=1)
-    studentbox2 = Entry(mainwindow)
+    studentbox2 = Spinbox(mainwindow, from_=14, to=18, wrap=True)
     studentbox2.grid(row=2, column=2)
     Label(mainwindow, text="student class").grid(row=3, column=1)
-    studentbox3 = Entry(mainwindow)
-    studentbox3.grid(row=3, column=2)
+    studentbox3 = StringVar(mainwindow)
+    studentbox3.set("Select an Option")
+    clas = OptionMenu(mainwindow, studentbox3, *classlist)
+    clas.grid(row=3, column=2)
     Button(mainwindow, text="subimt", command=makelist,
            width=10, height=1).grid(row=4, column=2)
 
@@ -76,7 +82,7 @@ def daliyreportwindow():
             reportbox3.get(),
             reportbox4.get(),
             reportbox5.get(),
-            str(time.strftime("%x"))]
+            str(time.strftime("%x"))] #adds the date that the report was filled according to the system to prevent back dating
         write()
     mainwindow = Tk()
     global writeas
@@ -85,17 +91,19 @@ def daliyreportwindow():
     reportbox1 = Entry(mainwindow)
     reportbox1.grid(row=1, column=2)
     Label(mainwindow, text="number of students").grid(row=2, column=1)
-    reportbox2 = Entry(mainwindow)
+    reportbox2 = Spinbox(mainwindow, from_=4, to=10, wrap=True)
     reportbox2.grid(row=2, column=2)
     Label(mainwindow, text="day").grid(row=3, column=1)
-    reportbox3 = Entry(mainwindow)
+    reportbox3 = Spinbox(mainwindow, from_=1, to=10, wrap=True)
     reportbox3.grid(row=3, column=2)
     Label(mainwindow, text="weather").grid(row=4, column=1)
     reportbox4 = Entry(mainwindow)
     reportbox4.grid(row=4, column=2)
     Label(mainwindow, text="class").grid(row=5, column=1)
-    reportbox5 = Entry(mainwindow)
-    reportbox5.grid(row=5, column=2)
+    reportbox5 = StringVar(mainwindow)
+    reportbox5.set("Select an Option")
+    clas = OptionMenu(mainwindow, reportbox5, *classlist)
+    clas.grid(row=5, column=2)
     Button(mainwindow, text="subimt", command=makelist,
            width=10, height=1).grid(row=6, column=2)
 
@@ -105,27 +113,35 @@ def sherchoutput(info):
     Label(results, text="results", font=("bold", 13)).grid(row=1, column=1)
     Label(results, text="\n".join(info)).grid(row=2, column=1)
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
+    Button(results, text="expaned", command=showmore).grid(row=3, column=2)
+
+def showmore():
+    if toopen =="student":
+        toopen = "stuff.csv"
+    elif toopen == "location" or "day":
+        toopen = "role.csv"
+    sherch()
 
 
 def sherch():
-    if sherchby.get() == "student":
+    if toopen == "student":
         file = "role.csv"
-    elif sherchby.get() == "location" or "day":
+    elif toopen == "location" or "day":
         file = "stuff.csv"
     with open(file) as mainfile:
         csv.reader(mainfile)
-        feilds = ast.literal_eval(str(next(mainfile).split(",")))
+        feilds = ast.literal_eval(str(next(mainfile).split(","))) #takes the values and makes a "list of lists"
         for i in mainfile:
             rows.append(i)
     for i in rows:
         print(i)
-        data.append(dict(zip(feilds, str(i).split(","))))
+        data.append(dict(zip(feilds, str(i).split(",")))) #ties each value to its label to make them into sherchbale dictonarys
 
     Check = sherchbox.get()
     info = {}
     for i in data:
         if Check in i.values():
-            if info != i:
+            if info != i: #this checks if the answer was found pervoslay and stops duplaction
                 info = i
                 sherchoutput(info)
 
