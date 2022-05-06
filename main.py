@@ -106,6 +106,7 @@ def sherchoutput(info):
     Label(results, text="\n".join(info)).grid(row=2, column=1)
     Label(results, text="\n".join(info.values())).grid(row=2, column=2)
 
+
 def sherch():
     if sherchby.get() == "student":
         file = "role.csv"
@@ -127,7 +128,6 @@ def sherch():
             if info != i:
                 info = i
                 sherchoutput(info)
-
 
 
 def write():
