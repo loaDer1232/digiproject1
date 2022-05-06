@@ -6,6 +6,7 @@ from tkinter import *
 startwindow = Tk()
 
 dropvalues = ["student", "location", "day"]
+classlist = ["A","B","C"]
 
 feilds = []
 rows = []
@@ -27,6 +28,10 @@ def start():
 
 
 def main():
+    def rer():
+         global toopen
+         toopen = sherchby.get()
+         sherch()
     mainwindow = Tk()
     sherchby = StringVar(mainwindow)
     sherchby.set("Select an Option")
@@ -34,10 +39,8 @@ def main():
     fuck.grid(row=1, column=2)
     Label(mainwindow, text="sherch by").grid(row=1, column=1)
     Label(mainwindow, text="sherch for").grid(row=2, column=1)
-    Button(mainwindow, text="submit", command=sherch,
+    Button(mainwindow, text="submit", command=rer,
            width=10, height=1).grid(row=3, column=2)
-    global toopen
-    toopen = sherchby.get()
     global sherchbox
     sherchbox = Entry(mainwindow)
     sherchbox.grid(row=2, column=2)
@@ -57,11 +60,13 @@ def addstudentwindow():
     studentbox1 = Entry(mainwindow)
     studentbox1.grid(row=1, column=2)
     Label(mainwindow, text="student age").grid(row=2, column=1)
-    studentbox2 = Entry(mainwindow)
+    studentbox2 = Spinbox(mainwindow, from_=14, to=18, wrap=True)
     studentbox2.grid(row=2, column=2)
     Label(mainwindow, text="student class").grid(row=3, column=1)
-    studentbox3 = Entry(mainwindow)
-    studentbox3.grid(row=3, column=2)
+    studentbox3 = StringVar(mainwindow)
+    studentbox3.set("Select an Option")
+    clas = OptionMenu(mainwindow, studentbox3, *classlist)
+    clas.grid(row=3, column=2)
     Button(mainwindow, text="subimt", command=makelist,
            width=10, height=1).grid(row=4, column=2)
 
@@ -89,14 +94,16 @@ def daliyreportwindow():
     reportbox2 = Spinbox(mainwindow, from_=4, to=10, wrap=True)
     reportbox2.grid(row=2, column=2)
     Label(mainwindow, text="day").grid(row=3, column=1)
-    reportbox3 = Entry(mainwindow)
+    reportbox3 = Spinbox(mainwindow, from_=1, to=10, wrap=True)
     reportbox3.grid(row=3, column=2)
     Label(mainwindow, text="weather").grid(row=4, column=1)
     reportbox4 = Entry(mainwindow)
     reportbox4.grid(row=4, column=2)
     Label(mainwindow, text="class").grid(row=5, column=1)
-    reportbox5 = Entry(mainwindow)
-    reportbox5.grid(row=5, column=2)
+    reportbox5 = StringVar(mainwindow)
+    reportbox5.set("Select an Option")
+    clas = OptionMenu(mainwindow, reportbox5, *classlist)
+    clas.grid(row=5, column=2)
     Button(mainwindow, text="subimt", command=makelist,
            width=10, height=1).grid(row=6, column=2)
 
@@ -113,6 +120,7 @@ def showmore():
         toopen = "stuff.csv"
     elif toopen == "location" or "day":
         toopen = "role.csv"
+    sherch()
 
 def sherch():
     if toopen == "student":
