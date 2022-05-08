@@ -16,7 +16,7 @@ info = {}
 
 
 def start():
-    Label(startwindow, text="selcet function",
+    Label(startwindow, text="select function",
           font=("bold", 13)).grid(row=1, column=1)
     Button(startwindow, text="daily report", command=daliyreportwindow,
            width=10, height=1).grid(row=2, column=1)
@@ -49,7 +49,7 @@ def main():
 
 def addstudentwindow():
     def makelist():
-        Label(mainwindow, text="subitisoin sucseful",
+        Label(mainwindow, text="submission successful",
               foreground="green").grid(row=4, column=1)
         global newstudent
         # makes it so that i dont need to decaler every box a global varible and save mermoery somehow
@@ -62,7 +62,7 @@ def addstudentwindow():
     Label(mainwindow, text="student last name").grid(row=1, column=1)
     studentbox1 = Entry(mainwindow)
     studentbox1.grid(row=1, column=2)
-    Label(mainwindow, text="student fist name").grid(row=2, column=1)
+    Label(mainwindow, text="student first name").grid(row=2, column=1)
     studentbox2 = Entry(mainwindow)
     studentbox2.grid(row=2, column=2)
     Label(mainwindow, text="student age").grid(row=3, column=1)
@@ -73,13 +73,13 @@ def addstudentwindow():
     studentbox4.set(classlist[0])
     clas = OptionMenu(mainwindow, studentbox4, *classlist)
     clas.grid(row=4, column=2)
-    Button(mainwindow, text="subimt", command=makelist,
+    Button(mainwindow, text="submit", command=makelist,
            width=10, height=1).grid(row=5, column=2)
 
 
 def daliyreportwindow():
     def makelist():
-        Label(mainwindow, text="subitisoin sucseful",
+        Label(mainwindow, text="submission successful",
               foreground="green").grid(row=6, column=1)
         global reportdata
         reportdata = [
@@ -112,7 +112,7 @@ def daliyreportwindow():
     reportbox5.set(classlist[0])
     clas = OptionMenu(mainwindow, reportbox5, *classlist)
     clas.grid(row=5, column=2)
-    Button(mainwindow, text="subimt", command=makelist,
+    Button(mainwindow, text="submit", command=makelist,
            width=10, height=1).grid(row=6, column=2)
 
 
