@@ -1,3 +1,8 @@
-location,numberofstudents,day,weather,class,date 
+Location:,Number of Students:,Day:,Weather:,Class:,Date:
 
 
+hills,4,1,Sunny,A,05/08/22
+
+Wellington,4,1,Sunny,A,05/08/22
+Wellington,8,4,Cloudy,B,05/08/22
+Wellington,8,4,Cloudy,B,05/08/22
