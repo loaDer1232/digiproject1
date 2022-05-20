@@ -56,6 +56,8 @@ def addstudentwindow():
         newstudent = [studentbox1.get().capitalize(), studentbox2.get().capitalize(),
                       studentbox3.get(), studentbox4.get()]
         write()
+        mainwindow.destroy()
+        addstudentwindow()
     mainwindow = Tk()
     global writeas
     writeas = "role.csv"
@@ -90,6 +92,8 @@ def daliyreportwindow():
             reportbox5.get(),
             str(time.strftime("%x"))]  # adds the date that the report was filled according to the system to prevent back dating
         write()
+        mainwindow.destroy()
+        daliyreportwindow()
     mainwindow = Tk()
     global writeas
     writeas = "stuff.csv"
