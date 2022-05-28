@@ -53,9 +53,11 @@ def addstudentwindow():
               foreground="green").grid(row=4, column=1)
         global newstudent
         # makes it so that i dont need to decaler every box a global varible and save mermoery somehow
-        newstudent = [studentbox1.get(), studentbox2.get(),
+        newstudent = [studentbox1.get().capitalize(), studentbox2.get().capitalize(),
                       studentbox3.get(), studentbox4.get()]
         write()
+        mainwindow.destroy()
+        addstudentwindow()
     mainwindow = Tk()
     global writeas
     writeas = "role.csv"
@@ -83,13 +85,15 @@ def daliyreportwindow():
               foreground="green").grid(row=6, column=1)
         global reportdata
         reportdata = [
-            reportbox1.get(),
+            reportbox1.get().capitalize(),
             reportbox2.get(),
             reportbox3.get(),
             reportbox4.get(),
             reportbox5.get(),
             str(time.strftime("%x"))]  # adds the date that the report was filled according to the system to prevent back dating
         write()
+        mainwindow.destroy()
+        daliyreportwindow()
     mainwindow = Tk()
     global writeas
     writeas = "stuff.csv"
@@ -148,7 +152,7 @@ def sherch():
         # ties each value to its label to make them into sherchbale dictonarys
         data.append(dict(zip(feilds, str(i).split(","))))
 
-    Check = sherchbox.get()
+    Check = sherchbox.get().capitalize()
     info = {}
     for i in data:
         if Check in i.values():

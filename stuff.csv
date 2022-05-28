@@ -1,4 +1,5 @@
 Location:,Number of Students:,Day:,Weather:,Class:,Date:
+<<<<<<< HEAD
 
 
 hills,4,1,Sunny,A,05/08/22
@@ -7,3 +8,9 @@ Wellington,4,1,Sunny,A,05/08/22
 Wellington,8,4,Cloudy,B,05/08/22
 Wellington,8,4,Cloudy,B,05/08/22
 ,4,1,Sunny,A,05/22/22
+=======
+hills,4,1,Sunny,A,05/20/22
+Hills,4,1,Sunny,A,05/20/22
+Frrfr,4,1,Sunny,A,05/20/22
+Frf,4,1,Sunny,A,05/20/22
+>>>>>>> 9feeee4f3000d4bf099cf9599764ee3df03b4e91

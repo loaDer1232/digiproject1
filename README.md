@@ -274,18 +274,18 @@ The app was extremely simple and easy for me to use as well as having a lot of f
 ```
 # screencaps
 this is the start up screen it is basicly just a four way menu     
-![home](readmedata/home.png)   
+![home](readmedata/home.PNG)   
 this window lets you add new students     
-![newstudent](readmedata/newstudent.png)   
+![newstudent](readmedata/newstudent.PNG)   
 this is the daly report logger i think this was the main part of the breif     
-![dailyreport](readmedata/daily.png)    
+![dailyreport](readmedata/daily.PNG)    
 and finaly the sherch window and the results table        
-![sherchwindow](readmedata/sherch.png)
-![results](readmedata/results.png)
+![sherchwindow](readmedata/sherch.PNG)
+![results](readmedata/results.PNG)
 
 # planing 
 here is some proof of planing
-![flow](readmedata/flow.png)
+![flow](readmedata/flow.PNG)
 
 # bugs
 ## solved bugs
